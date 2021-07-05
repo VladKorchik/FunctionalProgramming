@@ -6,11 +6,12 @@ import java.util.stream.Stream;
 
 public class Main {
 
-    public static Collection<String> ORIGINAL_TEXT = new ArrayList<>();
+
 
     public static void main(String[] args) {
+        public static Collection<String> originalText = new ArrayList<>();
         getTextFromUser();
-        sortWords(ORIGINAL_TEXT);
+        sortWords(originalText);
 
     }
 
@@ -19,7 +20,7 @@ public class Main {
         System.out.println("Введите полученный текст или пустое сообщение + enter для начала обработки");
         String text = scanner.nextLine();
             if (text != ("")) {
-                ORIGINAL_TEXT.add(text);
+                originalText.add(text);
                 getTextFromUser();
             }
         scanner.close();
