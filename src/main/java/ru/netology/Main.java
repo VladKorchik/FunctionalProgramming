@@ -9,7 +9,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        public static Collection<String> originalText = new ArrayList<>();
+        Collection<String> originalText = new ArrayList<>();
         getTextFromUser();
         sortWords(originalText);
 
