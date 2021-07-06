@@ -6,31 +6,26 @@ import java.util.stream.Stream;
 
 public class Main {
 
-    public static Collection<String> ORIGINAL_TEXT = new ArrayList<>();
-
     public static void main(String[] args) {
-        getTextFromUser();
-        sortWords(ORIGINAL_TEXT);
-
+        Collection<String> originalText = new ArrayList<>();
+        getTextFromUser(originalText);
+        sortWords(originalText);
     }
 
-    public static void getTextFromUser() {
+    public static void getTextFromUser(Collection<String> originalText) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите полученный текст или пустое сообщение + enter для начала обработки");
         String text = scanner.nextLine();
             if (text != ("")) {
-                ORIGINAL_TEXT.add(text);
-                getTextFromUser();
+                originalText.add(text);
+                getTextFromUser(originalText);
             }
         scanner.close();
     }
 
     public static void sortWords (Collection<String> originalText) {
-        Collection<String> collection = originalText;
-        Arrays.stream(collection.stream()
-                .flatMap((p) -> Arrays.asList(p.split(" ")) //create array from collection
-                .stream())
-                .toArray(String[]::new))
+        originalText.stream()
+                .flatMap(s -> Arrays.stream(s.split(" ")))
                 .distinct()     //remove copyies
                 .sorted()
                 .forEach(s -> System.out.println(s));
